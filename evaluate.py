@@ -31,7 +31,7 @@ label_file = "/path to /val_id.txt"
 res_dir = "/path to net result labels/"
 ims = open(label_file)
 ious =  [[0 for col in range(21)] for row in range(1449)]   # [1449, 21]
-clsaaes = [[0 for col in range(21)] for row in range(10)]
+clsaaes = [[0 for col in range(21)] for row in range(1449)]
 idx = 0
 for im in ims:
 	# print res_dir + im[:-1] + "_blob_0.png"
