@@ -31,9 +31,7 @@ def IOU(lab, res, im):
 
 
 
-lab_dir = "/path to gt /" 
-# rgb_dir = "/hik/home/chenjia12/work/deeplab_v2-master/data/VOC2012_orig/JPEGImages/"  
-# col_lab_dir = "/hik/home/chenjia12/work/deeplab_v2-master/data/VOC2012_orig/SegmentationClass/"    
+lab_dir = "/path to gt /"   
 label_file = "/path to /val_id.txt"
 # only need change res label dir
 res_dir = "/path net result label/"  #.mat
@@ -47,7 +45,7 @@ for im in ims:
 	mat_file=mat_file['data']
 	res=np.argmax(mat_file,axis=2).astype(np.uint8)
 	lab = np.array(lab)
-	# 表示这里很坑, 网络在某个地方把gt转置了......  手动转回来.....
+	# 表示这里很坑, Image.open读图会把图像的size h w 互换了......  手动转回来.....
 	lab = np.transpose(lab, [1,0])
 	# print lab.shape
 	height = min(res.shape[0], lab.shape[0])
@@ -69,5 +67,3 @@ res = 0
 for i in range(21):
 	res += iou[i] / cla[i]
 print res / 21
-
-
